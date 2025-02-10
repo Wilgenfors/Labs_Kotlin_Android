@@ -102,18 +102,16 @@ class LabSecondNumber_7 {
         // Создаем массив:
         print("Введите количество элементов массива: ")
         var n = readLine()!!.toInt();
-        var array = IntArray(n, { Random.nextInt(10) })
-        println("массив:")
+        var array = IntArray(n, { Random.nextInt(100) })
+        println("Массив:")
         array.forEach { print(" $it ") }
 
         // Сортируем согласно условию:
         println("\nПреобразованный массив:")
-        var i = 0;
-        var test: IntArray = intArrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
-        test.forEach { print("${if ((i++ != 0) && (((i++) % 5 == 0) || ((i++) % 3 == 0))) "$it " else ""}") }
+        for (i in array.indices)
+            if (array[i] % 3 == 0 && array[i] % 5 == 0) print("$i ")
     }
 }
-
 
 fun main() {
     // First by lab's:
@@ -122,7 +120,7 @@ fun main() {
 
     // Second by lab's:
     //val Lab2_number_19: LabSecondNumber_19 = LabSecondNumber_19()
-    val Lab2_number_7: LabSecondNumber_7 = LabSecondNumber_7()
+    //val Lab2_number_7: LabSecondNumber_7 = LabSecondNumber_7()
 
     // Third by lab's:
 
