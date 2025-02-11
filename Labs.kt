@@ -118,28 +118,57 @@ class LabThirdNumber_7 {
     //может содержать оба вида объектов. Предусмотреть метод подсчета отдельно самолетов и вертолетов
     //(использовать оператор is).
 
-    open class FlyingApparatus(
+    open class FlyingApparatus( // Суперкласс - летательный аппарат
         var name_model: String = "Неизвестно",
         var maxSpeed: Int = 0,
         var maxLevelFlying: Int = 0
-    ) {
-        // Базовый класс – летательный аппарат.
-//        constructor(_name_model: String, _maxSpeed: Int, _maxLevelFlying: Int) : this(
-//            _name_model,
-//            _maxSpeed,
-//            _maxLevelFlying
-//        ) {
-//            // Дополнительная логика, если требуется
-//        }
+    )
+
+    // Производный класс – самолет.
+    class airplane(
+        //Field's superclass:
+        name_model: String = "Неизвестно",
+        maxSpeed: Int = 0,
+        maxLevelFlying: Int = 0,
+
+        // Field's base class:
+        var numPassengers: Int = 300,
+        var autopilot: Boolean = false
+    ) : FlyingApparatus(name_model, maxSpeed, maxLevelFlying) {
+
+        override fun toString() = "Самолет (модель=$name_model, максСкорость=$maxSpeed " +
+                "кол-во пассажиров=$numPassengers, есть автопилот? =${if (autopilot) "да" else "нет"} )"
     }
 
-    class airplane : FlyingApparatus() { // Производный класс – самолет.
 
-    }
+    class helicopter(
+        //Field's superclass:
+        name_model: String = "Неизвестно",
+        maxSpeed: Int = 0,
+        maxLevelFlying: Int = 0,
 
+        // Field's base class:
+        var is_licencia: String = "Нет",
+        var propeller_revolutions: Int = 0,
 
-    class helicopter : FlyingApparatus() { // Производный класс – вертолет.
+        ) : FlyingApparatus(name_model, maxSpeed, maxLevelFlying) {
+        fun setAllInfo() {
+            print("Введите название модели вертолета: ")
+            name_model = readLine()!!
+            print("Введите максимальную скорость вертолета: ")
+            maxSpeed = readLine()!!.toInt();
+            print("Введите максимальный уровень высоты для полета: ")
+            maxLevelFlying = readLine()!!.toInt()
+            print("Есть ли лицензия у пилота: ");
+            is_licencia = readLine()!!
+            print("Количество оборотов несущего винта в минуту ");
+            propeller_revolutions = readLine()!!.toInt()
+            println()
+        }
 
+        override fun toString() = "\n\tВертолет" + "\n\t" + " Молель: " + name_model + "\n\t" +
+                " Максимальная скорость: " + maxSpeed + "\n\t" + " Допустимый уровень высоты: " + maxLevelFlying + "\n\t" +
+                " Мощность: " + power + "\n\t" + " Признак прицепа: " + trailer + "\n"
     }
 
     class Airline : FlyingApparatus() { // Производный класс – вертолет.
@@ -160,8 +189,8 @@ fun main() {
     val Lab3_Number_7: LabThirdNumber_7.Airline = LabThirdNumber_7.Airline()
 
     // Проверка создания леталок:
-    val obj: LabThirdNumber_7.FlyingApparatus = LabThirdNumber_7.FlyingApparatus("model", 123, 1200)
-    println("${obj.name_model} ${obj.maxSpeed} ${obj.maxLevelFlying}")
+//    val obj: LabThirdNumber_7.FlyingApparatus = LabThirdNumber_7.FlyingApparatus("model", 123, 1200)
+//    println("${obj.name_model} ${obj.maxSpeed} ${obj.maxLevelFlying}")
     //Создание вертолётов:
 
     //Создание самолетов:
