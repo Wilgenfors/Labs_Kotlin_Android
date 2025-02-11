@@ -113,6 +113,40 @@ class LabSecondNumber_7 {
     }
 }
 
+class LabThirdNumber_7 {
+    //Базовый класс – летательный аппарат. Производные – самолет и вертолет. Создать класс Авиакомпания, который
+    //может содержать оба вида объектов. Предусмотреть метод подсчета отдельно самолетов и вертолетов
+    //(использовать оператор is).
+
+    open class FlyingApparatus(
+        var name_model: String = "Неизвестно",
+        var maxSpeed: Int = 0,
+        var maxLevelFlying: Int = 0
+    ) {
+        // Базовый класс – летательный аппарат.
+//        constructor(_name_model: String, _maxSpeed: Int, _maxLevelFlying: Int) : this(
+//            _name_model,
+//            _maxSpeed,
+//            _maxLevelFlying
+//        ) {
+//            // Дополнительная логика, если требуется
+//        }
+    }
+
+    class airplane : FlyingApparatus() { // Производный класс – самолет.
+
+    }
+
+
+    class helicopter : FlyingApparatus() { // Производный класс – вертолет.
+
+    }
+
+    class Airline : FlyingApparatus() { // Производный класс – вертолет.
+
+    }
+}
+
 fun main() {
     // First by lab's:
     //val Lab1_number_19: LabFirstNumber_19 = LabFirstNumber_19()
@@ -123,5 +157,17 @@ fun main() {
     //val Lab2_number_7: LabSecondNumber_7 = LabSecondNumber_7()
 
     // Third by lab's:
+    val Lab3_Number_7: LabThirdNumber_7.Airline = LabThirdNumber_7.Airline()
 
+    // Проверка создания леталок:
+    val obj: LabThirdNumber_7.FlyingApparatus = LabThirdNumber_7.FlyingApparatus("model", 123, 1200)
+    println("${obj.name_model} ${obj.maxSpeed} ${obj.maxLevelFlying}")
+    //Создание вертолётов:
+
+    //Создание самолетов:
+
+
+    // Подсчет вертолетов:
+
+    // Подсчет самолетов:
 }
